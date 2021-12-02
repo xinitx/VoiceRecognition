@@ -11,7 +11,6 @@ const users = require("./routes/api/users")
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-
 //DB config
 const db = require("./config/keys").mongoURI
 //连接数据库
@@ -19,7 +18,7 @@ mongoose.connect(db)
   .then(() => { console.log('数据库连接成功'); })
   .catch(() => { console.log(err); })
 
-  
+
 //初始化passport
 app.use(passport.initialize());
 //配置passport的文件

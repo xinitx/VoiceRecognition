@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken')
 const gravatar = require('gravatar')
 const keys = require('../../config/keys')
 const passport = require("passport")
-
 //引入User.js
 const User = require("../../models/User")
 
