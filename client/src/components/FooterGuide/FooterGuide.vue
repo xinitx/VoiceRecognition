@@ -1,31 +1,56 @@
 <template>
   <!-- 底部组件 -->
   <div class="footer_guide">
-    <span href="javascript:;" class="guide_item" @click="goTo('/msite')">
+    <span
+      href="javascript:;"
+      :class="{ on: '/home' === $route.path }"
+      class="guide_item"
+      @click="goTo('/home')"
+    >
       <span class="item_icon">
         <i class="iconfont icon-home"></i>
       </span>
       <span>首页</span>
     </span>
-    <span href="javascript:;" class="guide_item" @click="goTo('/search')">
+    <span
+      href="javascript:;"
+      :class="{ on: '/discuss' === $route.path }"
+      class="guide_item"
+      @click="goTo('/discuss')"
+    >
       <span class="item_icon">
         <i class="iconfont icon-luntan"></i>
       </span>
       <span>论坛</span>
     </span>
-    <span href="javascript:;" class="guide_item" @click="goTo('/order')">
+    <span
+      href="javascript:;"
+      :class="{ on: '/course' === $route.path }"
+      class="guide_item"
+      @click="goTo('/course')"
+    >
       <span class="item_icon">
         <i class="iconfont icon-zuoyeguanli"></i>
       </span>
       <span>课程</span>
     </span>
-    <span href="javascript:;" class="guide_item" @click="goTo('/profile')">
+    <span
+      href="javascript:;"
+      :class="{ on: '/message' === $route.path }"
+      class="guide_item"
+      @click="goTo('/message')"
+    >
       <span class="item_icon">
         <i class="iconfont icon-xiaoxi"></i>
       </span>
       <span>消息</span>
     </span>
-    <span href="javascript:;" class="guide_item" @click="goTo('/profile')">
+    <span
+      href="javascript:;"
+      :class="{ on: '/profile' === $route.path }"
+      class="guide_item"
+      @click="goTo('/profile')"
+    >
       <span class="item_icon">
         <i class="iconfont icon-wode"></i>
       </span>
@@ -46,7 +71,7 @@ export default {
 
 <style>
 .footer_guide {
-  border-top: 1px soild #e4e4e4;
+  border-top: 1px solid #e4e4e4;
   position: fixed;
   z-index: 100;
   left: 0;
@@ -54,7 +79,7 @@ export default {
   bottom: 0;
   background-color: #fff;
   width: 100%;
-  height: 50px;
+  height: 55px;
   display: flex;
 }
 .guide_item {
@@ -76,6 +101,6 @@ span {
   margin-bottom: 2px;
 }
 .iconfont {
-  font-size: 22px;
+  font-size: 25px;
 }
 </style>

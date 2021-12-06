@@ -7,13 +7,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-// import Msite from '../pages/Msite/Msite';
-// import Search from '../pages/Search/Search';
-// import Order from '../pages/Order/Order';
-// import Profile from '../pages/Profile/Profile';
+import Home from '../pages/Home/Home';
+import Discuss from '../pages/Discuss/Discuss';
+import Course from '../pages/Course/Course';
+import Message from '../pages/Message/Message';
+import Profile from '../pages/Profile/Profile';
 
-
-// import Login from '../pages/Login/Login';
+import Login from '../pages/Login/Login';
 
 // 声明使用插件
 Vue.use(VueRouter)
@@ -21,42 +21,49 @@ Vue.use(VueRouter)
 export default new VueRouter({
   //所有路由
   routes: [
-    // {
-    //   path: '/msite',
-    //   component: Msite,//返回路由组件的函数
-    //   meta: {
-    //     showFooter: true
-    //   }
-    // },
-    // {
-    //   path: '/search',
-    //   component: Search,
-    //   meta: {
-    //     showFooter: true
-    //   }
-    // },
-    // {
-    //   path: '/order',
-    //   component: Order,
-    //   meta: {
-    //     showFooter: true
-    //   }
-    // },
-    // {
-    //   path: '/profile',
-    //   component: Profile,
-    //   meta: {
-    //     showFooter: true
-    //   }
-    // },
-    // {
-    //   path: '/',
-    //   redirect: '/msite'
-    // },
-    // {//登录组件是一级路由
-    //   path: '/login',
-    //   component: Login
-    // },
+    {
+      path: '/home',
+      component: Home,//返回路由组件的函数
+      meta: {
+        showFooter: true
+      }
+    },
+    {
+      path: '/discuss',
+      component: Discuss,
+      meta: {
+        showFooter: true
+      }
+    },
+    {
+      path: '/course',
+      component: Course,
+      meta: {
+        showFooter: true
+      }
+    },
+    {
+      path: '/profile',
+      component: Profile,
+      meta: {
+        showFooter: true
+      }
+    },
+    {
+      path: '/message',
+      component: Message,
+      meta: {
+        showFooter: true
+      }
+    },
+    {
+      path: '/',
+      redirect: '/home'
+    },
+    {//登录组件是一级路由
+      path: '/login',
+      component: Login
+    },
 
   ]
 })

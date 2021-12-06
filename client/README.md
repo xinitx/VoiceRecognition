@@ -1,24 +1,21 @@
-# client
+###### src
 
-## Project setup
 ```
-npm install
+|-- components------------非路由组件文件夹
+	|-- FooterGuide---------------底部组件文件夹 
+	|-- AlertTip---------------警告弹窗组件
+|-- pages-----------------路由组件文件夹 
+    |-- Login---------------登录组件文件夹 
+    |-- Home---------------首页组件文件夹 （一级）
+	|-- Discuss---------------论坛组件文件夹 （一级）
+	|-- Course---------------课程组件文件夹 （一级）
+    |-- Message---------------商家详情页的头部组件文件夹 （一级）
+    |-- Profile---------------我的组件文件夹 （一级）
+    
+    |-- Shop---------------整个购物组件文件夹 
+        |-- ShopGoods---------------购物组件中的点餐组件文件夹 
+        |-- ShopInfo---------------购物组件中的商家信息组件文件夹 
+        |-- ShopRatings---------------购物组件中的商品评价组件文件夹 
+        |-- Shop.vue--------整个购物组件 vue 
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
