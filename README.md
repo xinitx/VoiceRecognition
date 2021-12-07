@@ -60,3 +60,12 @@ User.js
 	创建数据库模型（规则）
 ```
 
+```
+npm install --save moment 
+npm install --save js-base64
+npm install --save express-session
+npm install --save cookie-parser
+npm install axios
+新增util文件夹，负责发送短信验证码
+```
+

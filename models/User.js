@@ -6,13 +6,10 @@ const UserSchema = new Schema({
   //创建规则
   name: {//名字
     type: String,
-    required: true
+    // required: true
+    default: '默认昵称'
   },
-  email: {//邮箱
-    type: String,
-    required: true
-  },
-  password: {//密码
+  phone: {//邮箱
     type: String,
     required: true
   },
@@ -23,10 +20,10 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  identity: {//身份
-    type: String,
-    required: true
-  },
+  // identity: {//身份
+  //   type: String,
+  //   required: true
+  // },
 })
 
 module.exports = User = mongoose.model('users', UserSchema)
