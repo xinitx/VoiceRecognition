@@ -14,24 +14,20 @@
       <div class="t2">
         <router-link to="/message/friends">朋友</router-link>
       </div>
-      <span class="nth"></span>
       <!-- 陌生人页面 -->
       <div class="t2">
         <router-link to="/message/strangers">陌生人</router-link>
       </div>
-      <span class="nth"></span>
     </div>
+
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 
 <script>
-export default {
-  methods: {
-    goTo(path) {
-      this.$router.replace(path);
-    },
-  },
-};
+export default {};
 </script>
 
 <style scoped>
@@ -83,12 +79,23 @@ export default {
 }
 
 a {
-  text-decoration: none;
+  position: relative;
   font-size: 16px;
 }
 .router-link-active {
-  color: #02a774;
-  font-weight: bold;
+  color: black;
   font-size: 18px;
+  font-weight: bold;
+}
+.router-link-active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  width: 35px;
+  height: 3px;
+  border-radius: 3px;
+  transform: translateX(-50%);
+  background: #a493ff;
 }
 </style>

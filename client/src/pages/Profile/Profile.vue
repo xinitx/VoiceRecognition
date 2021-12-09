@@ -134,7 +134,7 @@
 export default {};
 </script>
 
-<style >
+<style scoped>
 .mes_P {
   width: 100%;
   height: 200px;
