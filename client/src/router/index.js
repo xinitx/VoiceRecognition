@@ -14,6 +14,8 @@ import Message from '../pages/Message/Message';
 import Profile from '../pages/Profile/Profile';
 
 import Login from '../pages/Login/Login';
+import Friends from '../pages/Message/Friends/Friends';
+import Strangers from '../pages/Message/Strangers/Strangers';
 
 // 声明使用插件
 Vue.use(VueRouter)
@@ -54,7 +56,30 @@ export default new VueRouter({
       component: Message,
       meta: {
         showFooter: true
-      }
+      },
+      children: [
+        {//朋友路由
+          path: '/message/friends',
+          component: Friends,
+          meta: {
+            showFooter: true
+          },
+        },
+        {//陌生人路由
+          path: '/message/strangers',
+          component: Strangers,
+          meta: {
+            showFooter: true
+          },
+        },
+        {//进入Message路由后默认显示的二级路由
+          path: '',
+          redirect: '/message/friends',
+          meta: {
+            showFooter: true
+          },
+        },
+      ]
     },
     {
       path: '/',
