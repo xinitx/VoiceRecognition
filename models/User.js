@@ -20,10 +20,14 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  // identity: {//身份
-  //   type: String,
-  //   required: true
-  // },
+  fans: {//粉丝
+    type: Number,
+    default:0
+  },
+  follow:{//关注
+    type:Number,
+    default:0
+  }
 })
 
 module.exports = User = mongoose.model('users', UserSchema)
