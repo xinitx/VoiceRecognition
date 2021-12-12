@@ -12,6 +12,7 @@ import Discuss from '../pages/Discuss/Discuss';
 import Course from '../pages/Course/Course';
 import Message from '../pages/Message/Message';
 import Profile from '../pages/Profile/Profile';
+import Detail from '../pages/Detail/Detail';
 
 import Login from '../pages/Login/Login';
 import Friends from '../pages/Message/Friends/Friends';
@@ -80,6 +81,10 @@ export default new VueRouter({
           },
         },
       ]
+    },
+    {//聊天详情页路由
+      path: '/detail',
+      component: Detail,
     },
     {
       path: '/',

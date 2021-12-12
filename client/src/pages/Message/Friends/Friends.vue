@@ -15,18 +15,20 @@
       </li>
     </ul>
     <ul>
-      <li class="rating-item">
-        <div class="avatar">
-          <img width="40" height="40" src="../../../assets/头像.jpg" />
-        </div>
-        <div class="content">
-          <h1 class="name">昵称</h1>
-          <div class="star-wrapper">
-            <span class="delivery">嘻嘻</span>
+      <router-link to="/message/detail">
+        <li class="rating-item">
+          <div class="avatar">
+            <img width="40" height="40" src="../../../assets/头像.jpg" />
           </div>
-          <div class="time">时间</div>
-        </div>
-      </li>
+          <div class="content">
+            <h1 class="name">昵称</h1>
+            <div class="star-wrapper">
+              <span class="delivery">嘻嘻</span>
+            </div>
+            <div class="time">时间</div>
+          </div>
+        </li>
+      </router-link>
     </ul>
     <ul>
       <li class="rating-item">
