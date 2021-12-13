@@ -126,15 +126,66 @@
           </div>
         </a>
       </section>
+
+      <!-- 退出登录 -->
+      <section class="profile_my_order border-1px">
+        <mt-button
+          type="danger"
+          style="width: 100%"
+          v-if="userInfo._id"
+          @click="logout"
+          >退出登录</mt-button
+        >
+      </section>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+// import { MessageBox, Toast } from "mint-ui";
+
+export default {
+  computed: {
+    ...mapState(["userInfo"]),
+  },
+  components: {},
+  methods: {
+    // logout() {
+    //   MessageBox.confirm("确认退出吗？").then(
+    //     (action) => {
+    //       console.log("点击了确定");
+    //       //请求退出
+    //       this.$store.dispatch("logout");
+    //       Toast("退出成功");
+    //     },
+    //     (action) => {
+    //       console.log("点击了取消");
+    //     }
+    //   );
+    // },
+  },
+};
 </script>
 
 <style scoped>
+.profile_my_order {
+  margin-top: 10px;
+  background: #fff;
+
+  position: relative;
+}
+
+.profile_my_order::before content {
+  position: absolute;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #e4e4e4;
+}
+
 .mes_P {
   width: 100%;
   height: 200px;

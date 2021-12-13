@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
-//引入User.js
-const User = require("../../models/User")
+const md5 = require('blueimp-md5')
+const models = require('../db/models')
+const UserModel = models.getModel('user')
 const _filter = { 'pwd': 0, '__v': 0 } // 查询时过滤掉
 const sms_util = require('../util/sms_util')
 const users = {}
 const ajax = require('../api/ajax')
-// var svgCaptcha = require('svg-captcha')
+var svgCaptcha = require('svg-captcha')
 
 /*
 发送验证码短信
@@ -46,14 +47,14 @@ router.post('/login_sms', function (req, res, next) {
   delete users[phone];
 
 
-  User.findOne({ phone }, function (err, user) {
+  UserModel.findOne({ phone }, function (err, user) {
     if (user) {
       req.session.userid = user._id
       res.send({ code: 0, data: user })
     } else {
       //存储数据
-      const newUser = new UserModel({ phone })
-      newUser.save(function (err, user) {
+      const userModel = new UserModel({ phone })
+      userModel.save(function (err, user) {
         req.session.userid = user._id
         res.send({ code: 0, data: user })
       })
@@ -90,6 +91,5 @@ router.get('/logout', function (req, res) {
   // 返回数据
   res.send({ code: 0 })
 })
-
 
 module.exports = router;

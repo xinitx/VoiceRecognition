@@ -15,7 +15,7 @@
       </li>
     </ul>
     <ul>
-      <router-link to="/message/detail">
+      <router-link to="/detail">
         <li class="rating-item">
           <div class="avatar">
             <img width="40" height="40" src="../../../assets/头像.jpg" />

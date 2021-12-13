@@ -7,11 +7,15 @@
 </template>
 
 <script>
-// import { mapActions } from "vuex";
+import { mapActions } from "vuex";
 import FooterGuide from "./components/FooterGuide/FooterGuide";
 export default {
-  mounted() {},
-  methods: {},
+  mounted() {
+    this.getUserInfo();
+  },
+  methods: {
+    ...mapActions(["getUserInfo"]),
+  },
   components: {
     FooterGuide,
   },

@@ -18,6 +18,7 @@
                 :class="{ right_phone: rightPhone }"
                 :disabled="!rightPhone"
                 class="get_verification"
+                @click.prevent="getCode"
               >
                 <!-- 点击事件发生并且阻止表单的默认提交行为 -->
                 {{ computeTime > 0 ? `已发送(${computeTime}s)` : "获取验证码" }}
@@ -50,12 +51,16 @@
 
 <script>
 import AlertTip from "../../components/AlertTip/AlertTip";
+import { reqSendCode, reqSmsLogin } from "../../api";
 export default {
   data() {
     return {
+      loginWay: true, //true代表短信登陆，false代表密码登录
       computeTime: 0, //计时的时间
+      showPwd: false, //是否显示密码
       phone: "", //手机号
       code: "", //短信验证码
+      name: "", //用户名
       alertText: "", //提示文本
       alertShow: false, //是否显示警告框
     };
@@ -67,6 +72,93 @@ export default {
   },
   components: {
     AlertTip,
+  },
+  methods: {
+    //异步获取短信验证码
+    async getCode() {
+      //如果当前没有计时
+      if (!this.computeTime) {
+        //启动倒计时
+        this.computeTime = 30;
+        // console.log(this);
+        this.intervalId = setInterval(() => {
+          // console.log(this);
+          this.computeTime--;
+          if (this.computeTime <= 0) {
+            //停止计时
+            clearInterval(this.intervalId);
+          }
+        }, 1000);
+
+        //发送ajax请求（向指定手机号发送验证码短信）
+        const result = await reqSendCode(this.phone); //返回的是promise对象
+        if (result.code === 1) {
+          //失败
+          //显示提示
+          this.showAlert(result.msg);
+          //停止倒计时
+          if (this.computeTime) {
+            this.computeTime = 0;
+            clearInterval(this.intervalId);
+            this.intervalId = undefined;
+          }
+        }
+      }
+    },
+    showAlert(alertText) {
+      this.alertShow = true;
+      this.alertText = alertText;
+    },
+    //实现异步登录
+    async login() {
+      let result;
+      //前台表单验证
+      //有两种登录方式，所以需要验证是那种登录方式
+
+      //短信登录
+      const { rightPhone, phone, code } = this;
+      if (!rightPhone) {
+        //手机号不正确
+        this.showAlert("手机号不正确");
+        return;
+      } else if (!/^\d{6}$/.test(code)) {
+        //正则：6位的数字
+        //短信验证码不正确
+        this.showAlert("短信验证码不正确");
+        return;
+      }
+      //发送ajax请求短信登录
+      result = await reqSmsLogin(phone, code);
+
+      //无论成功还是失败都停止倒计时
+      if (this.computeTime) {
+        this.computeTime = 0;
+        clearInterval(this.intervalId);
+        this.intervalId = undefined;
+      }
+      //根据结果数据处理
+      if (result.code === 0) {
+        //成功
+        const user = result.data;
+        //将user保存到vuex的state
+        this.$store.dispatch("recordUser", user);
+        //跳转到个人中心界面
+        this.$router.replace("/profile");
+      } else {
+        //失败
+        //刷新图片验证码
+        this.getCaptcha();
+        //显示警告框
+        const msg = result.msg;
+        this.showAlert(msg);
+      }
+    },
+
+    //关闭警告框
+    closeTip() {
+      this.alertShow = false;
+      this.alertText = "";
+    },
   },
 };
 </script>

@@ -1,18 +1,12 @@
 {
-  "name": "node",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "name": "gshop_server",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "mint-ui": "^2.2.13",
-    "bcrypt": "^5.0.1",
-    "vue-router": "^3.5.3",
     "axios": "^0.18.0",
     "blueimp-md5": "^2.10.0",
     "body-parser": "~1.18.2",
