@@ -30,7 +30,7 @@ const userSchema = mongoose.Schema({
     required: true
   },
   avatar: {//头像
-    type: String
+    type: String,
   },
   date: {//日期
     type: Date,

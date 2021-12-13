@@ -6,11 +6,11 @@
         <span>我</span>
       </div>
 
-      <router-link to="/login">
+      <router-link :to="userInfo._id ? '/profile' : '/login'">
         <div class="right">
           <div class="centerright">
             <img src="../../assets/头像.jpg" alt="" />
-            <span>昵称</span>
+            <span>{{ userInfo.name || "点击登录" }}</span>
           </div>
           <div class="rightright">
             <i class="iconfont icon-youjiantou"></i>
@@ -51,15 +51,15 @@
         <ul>
           <a href="javascript:" class="info_data_link">
             <div class="info_data_bottom">winks</div>
-            <span class="info_data_bottom">300</span>
+            <span class="info_data_bottom">{{ userInfo.phone }}</span>
           </a>
           <a href="javascript:" class="info_data_link">
             <div class="info_data_bottom">粉丝</div>
-            <span class="info_data_bottom">92</span>
+            <span class="info_data_bottom">{{ userInfo.fans }}</span>
           </a>
           <a href="javascript:" class="info_data_link">
             <div class="info_data_bottom">关注</div>
-            <span class="info_data_bottom">92</span>
+            <span class="info_data_bottom">{{ userInfo.follow }}</span>
           </a>
         </ul>
       </section>
@@ -77,7 +77,11 @@
             </span>
           </div>
         </a>
-        <a href="javascript:" class="my_order">
+        <router-link
+          href="javascript:"
+          class="my_order"
+          :to="userInfo._id ? '/data' : '/login'"
+        >
           <span>
             <i class="iconfont icon-ziliao"></i>
           </span>
@@ -87,7 +91,7 @@
               <i class="iconfont icon-youjiantou"></i>
             </span>
           </div>
-        </a>
+        </router-link>
       </section>
       <div class="icon">隐私</div>
       <!-- 第二个 -->
@@ -143,27 +147,30 @@
 
 <script>
 import { mapState } from "vuex";
-// import { MessageBox, Toast } from "mint-ui";
-
+import { MessageBox, Toast } from "mint-ui";
+import BScroll from "@better-scroll/core";
 export default {
   computed: {
     ...mapState(["userInfo"]),
   },
   components: {},
+  mounted() {
+    new BScroll(".mes_Other");
+  },
   methods: {
-    // logout() {
-    //   MessageBox.confirm("确认退出吗？").then(
-    //     (action) => {
-    //       console.log("点击了确定");
-    //       //请求退出
-    //       this.$store.dispatch("logout");
-    //       Toast("退出成功");
-    //     },
-    //     (action) => {
-    //       console.log("点击了取消");
-    //     }
-    //   );
-    // },
+    logout() {
+      MessageBox.confirm("确认退出吗？").then(
+        (action) => {
+          console.log("点击了确定");
+          //请求退出
+          this.$store.dispatch("logout");
+          Toast("退出成功");
+        },
+        (action) => {
+          console.log("点击了取消");
+        }
+      );
+    },
   },
 };
 </script>
@@ -216,9 +223,9 @@ img {
   display: block;
 }
 .centerright {
-  position: absolute;
-  top: 20%;
-  right: 38%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .centerright span {
   font-size: 20px;
@@ -236,7 +243,7 @@ img {
 }
 .mes_Other {
   width: 100%;
-  height: 520px;
+  height: 550px;
   background-color: white;
   border-radius: 40px 40px 0px 0px;
   overflow: hidden;
@@ -474,22 +481,6 @@ img {
 
 .info_data_top span {
   color: #6ac20b;
-}
-
-.profile_my_order {
-  background: #fff;
-  position: relative;
-  padding-right: 10px;
-}
-
-.profile_my_order::before content {
-  position: absolute;
-  z-index: 200;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #e4e4e4;
 }
 
 .my_order {

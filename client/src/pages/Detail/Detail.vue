@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="block1">
-      <span class="iconfont icon-zuojiantou-copy"></span>
+      <span
+        class="iconfont icon-zuojiantou-copy"
+        @click="$router.back()"
+      ></span>
       <span>粉丝</span>
       <div>
         <span class="iconfont icon-luntan"></span>

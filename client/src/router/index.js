@@ -13,6 +13,7 @@ import Course from '../pages/Course/Course';
 import Message from '../pages/Message/Message';
 import Profile from '../pages/Profile/Profile';
 import Detail from '../pages/Detail/Detail';
+import Data from '../pages/Data/Data';
 
 import Login from '../pages/Login/Login';
 import Friends from '../pages/Message/Friends/Friends';
@@ -94,6 +95,9 @@ export default new VueRouter({
       path: '/login',
       component: Login
     },
-
+    {//基本资料
+      path: '/data',
+      component: Data
+    },
   ]
 })

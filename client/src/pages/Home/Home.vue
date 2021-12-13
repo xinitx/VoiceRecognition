@@ -3,7 +3,7 @@
     <div class="text">
       <div class="top">
         <p class="toptext">您好</p>
-        <p class="topuser">用户名！</p>
+        <p class="topuser">{{ userInfo.name || "请登录" }}</p>
       </div>
       <div class="title">BTF保障您的出行安全</div>
     </div>
@@ -41,7 +41,12 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
+  computed: {
+    ...mapState(["userInfo"]),
+  },
   data() {
     return {
       showPwd: false, //显示进入界面

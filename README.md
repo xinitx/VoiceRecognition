@@ -33,3 +33,10 @@ export const reqUserInfo = () => ajax(BASE_URL + '/userinfo')
 export const reqLogout = () => ajax(BASE_URL + '/logout')
 ```
 
+```
+使用云通讯实现发送短信功能，通过匹配验证码实现用户登录功能
+	缺点：只能添加测试手机号来接收验证码，如果要所有人都能接收验证码需要上线应用
+	
+用户登录后可查看并修改个人基本资料
+```
+

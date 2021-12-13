@@ -146,8 +146,6 @@ export default {
         this.$router.replace("/profile");
       } else {
         //失败
-        //刷新图片验证码
-        this.getCaptcha();
         //显示警告框
         const msg = result.msg;
         this.showAlert(msg);
