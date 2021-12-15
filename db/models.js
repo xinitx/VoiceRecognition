@@ -10,6 +10,8 @@
   2.2. 定义Model(与集合对应, 可以操作集合)
 3. 向外暴露获取Model的方法
  */
+const gravatar = require('gravatar')
+
 // 1. 连接数据库
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:27017/voice')
@@ -31,6 +33,7 @@ const userSchema = mongoose.Schema({
   },
   avatar: {//头像
     type: String,
+    default: 'C:/Users/26671/Desktop/头像.jpg'
   },
   date: {//日期
     type: Date,

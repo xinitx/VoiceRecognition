@@ -18,3 +18,6 @@ export const reqUserInfo = () => ajax(BASE_URL + '/userinfo')
 
 // [用户登出]
 export const reqLogout = () => ajax(BASE_URL + '/logout')
+
+//[修改用户信息]
+// export const reqEdit=()=>ajax(BASE_URL+'/edit')

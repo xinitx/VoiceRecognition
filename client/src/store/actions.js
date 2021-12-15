@@ -2,7 +2,7 @@
  * 通过mutation间接更新state的多个方法的对象
  */
 import { RECEIVE_USER_INFO, RESET_USER_INFO, } from './mutation-types'
-import { reqLogout, reqUserInfo, } from '../api'
+import { reqLogout, reqUserInfo, reqEdit } from '../api'
 
 export default {//要有与后台交互的异步actions
 
@@ -28,4 +28,5 @@ export default {//要有与后台交互的异步actions
       commit(RESET_USER_INFO)
     }
   },
+
 }

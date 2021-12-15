@@ -84,12 +84,30 @@ router.get('/userinfo', function (req, res) {
   })
 })
 
-
+/**
+ * 用户登出
+ */
 router.get('/logout', function (req, res) {
   // 清除浏览器保存的userid的cookie
   delete req.session.userid
   // 返回数据
   res.send({ code: 0 })
 })
+
+/**
+ * 根据_id，查找对应用户，将前端修改的信息存入数据库中
+ */
+// router.post("/edit/:id", (req, res) => {
+//   const userFields = {}
+//   if (req.body.avatar) userFields.name = req.body.avatar;
+//   if (req.body.name) userFields.name = req.body.name;
+
+//   //把编辑过的信息存入数据库
+//   UserModel.findOneAndUpdate(
+//     { _id: req.params.id },
+//     { $set: userFields }
+//   ).then(res.send({ code: 0, data: user }))
+
+// });
 
 module.exports = router;

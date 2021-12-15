@@ -150,7 +150,6 @@
 <script>
 import { mapState } from "vuex";
 import { MessageBox, Toast } from "mint-ui";
-import BScroll from "@better-scroll/core";
 export default {
   computed: {
     ...mapState(["userInfo"]),

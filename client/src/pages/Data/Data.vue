@@ -8,7 +8,20 @@
     </div>
     <div>
       <van-cell-group>
-        <van-cell title="头像" is-link value="内容" />
+        <van-cell title="头像" is-link @click="showPopup" />
+        <van-popup
+          v-model="show"
+          round
+          position="bottom"
+          :style="{ height: '30%' }"
+        >
+          <van-button class="cell" type="default" size="large" hairline
+            >拍照</van-button
+          >
+          <van-button class="cell" type="default" size="large" hairline
+            >从相册中选择</van-button
+          >
+        </van-popup>
         <van-field v-model="name" label="昵称" />
       </van-cell-group>
     </div>
@@ -22,7 +35,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { Cell, CellGroup, Field } from "vant";
+import { Cell, CellGroup, Field, Popup, Button } from "vant";
 import { MessageBox, Toast } from "mint-ui";
 
 export default {
@@ -32,12 +45,22 @@ export default {
   data() {
     return {
       name: 100,
+      show: false,
+      avatat: 1,
     };
+  },
+  mounted() {
+    //把用户名赋值给data中的name
+    this.name = this.userInfo.name;
+    //这里好像有点bug，因为cell标签不属于input类型，用不了v-model进行双向绑定
+    // this.avatar = this.userInfo.avatar;
   },
   components: {
     [Cell.name]: Cell,
     [CellGroup.name]: CellGroup,
     [Field.name]: Field,
+    [Popup.name]: Popup,
+    [Button.name]: Button,
   },
   methods: {
     comfirm() {
@@ -54,11 +77,18 @@ export default {
         }
       );
     },
+    showPopup() {
+      this.show = !this.show;
+    },
   },
 };
 </script>
 
 <style scoped>
+.cell {
+  margin-top: 20px;
+  font-size: 20px;
+}
 .datatop {
   display: flex;
   justify-content: space-between;
