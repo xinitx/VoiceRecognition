@@ -63,84 +63,86 @@
           </a>
         </ul>
       </section>
-      <!-- 第一个 -->
-      <div class="icon">社交</div>
-      <section class="profile_my_order">
-        <a href="javascript:" class="my_order">
-          <span>
-            <i class="iconfont icon-yanjing"></i>
-          </span>
-          <div class="my_order_div">
-            <span>访客</span>
-            <span class="my_order_icon">
-              <i class="iconfont icon-youjiantou"></i>
+      <div class="div">
+        <!-- 第一个 -->
+        <div class="icon">社交</div>
+        <section class="profile_my_order">
+          <a href="javascript:" class="my_order">
+            <span>
+              <i class="iconfont icon-yanjing"></i>
             </span>
-          </div>
-        </a>
-        <router-link
-          href="javascript:"
-          class="my_order"
-          :to="userInfo._id ? '/data' : '/login'"
-        >
-          <span>
-            <i class="iconfont icon-ziliao"></i>
-          </span>
-          <div class="my_order_div">
-            <span>基本资料</span>
-            <span class="my_order_icon">
-              <i class="iconfont icon-youjiantou"></i>
+            <div class="my_order_div">
+              <span>访客</span>
+              <span class="my_order_icon">
+                <i class="iconfont icon-youjiantou"></i>
+              </span>
+            </div>
+          </a>
+          <router-link
+            href="javascript:"
+            class="my_order"
+            :to="userInfo._id ? '/data' : '/login'"
+          >
+            <span>
+              <i class="iconfont icon-ziliao"></i>
             </span>
-          </div>
-        </router-link>
-      </section>
-      <div class="icon">隐私</div>
-      <!-- 第二个 -->
-      <section class="profile_my_order">
-        <a href="javascript:" class="my_order">
-          <span>
-            <i class="iconfont icon-zhanghuguanli"></i>
-          </span>
-          <div class="my_order_div">
-            <span>账户</span>
-            <span class="my_order_icon">
-              <i class="iconfont icon-youjiantou"></i>
+            <div class="my_order_div">
+              <span>基本资料</span>
+              <span class="my_order_icon">
+                <i class="iconfont icon-youjiantou"></i>
+              </span>
+            </div>
+          </router-link>
+        </section>
+        <div class="icon">隐私</div>
+        <!-- 第二个 -->
+        <section class="profile_my_order">
+          <a href="javascript:" class="my_order">
+            <span>
+              <i class="iconfont icon-zhanghuguanli"></i>
             </span>
-          </div>
-        </a>
-        <a href="javascript:" class="my_order">
-          <span>
-            <i class="iconfont icon-shoucang"></i>
-          </span>
-          <div class="my_order_div">
-            <span>收藏</span>
-            <span class="my_order_icon">
-              <i class="iconfont icon-youjiantou"></i>
+            <div class="my_order_div">
+              <span>账户</span>
+              <span class="my_order_icon">
+                <i class="iconfont icon-youjiantou"></i>
+              </span>
+            </div>
+          </a>
+          <a href="javascript:" class="my_order">
+            <span>
+              <i class="iconfont icon-shoucang"></i>
             </span>
-          </div>
-        </a>
-        <a href="javascript:" class="my_order">
-          <span>
-            <i class="iconfont icon-heimingdan"></i>
-          </span>
-          <div class="my_order_div">
-            <span>黑名单</span>
-            <span class="my_order_icon">
-              <i class="iconfont icon-youjiantou"></i>
+            <div class="my_order_div">
+              <span>收藏</span>
+              <span class="my_order_icon">
+                <i class="iconfont icon-youjiantou"></i>
+              </span>
+            </div>
+          </a>
+          <a href="javascript:" class="my_order">
+            <span>
+              <i class="iconfont icon-heimingdan"></i>
             </span>
-          </div>
-        </a>
-      </section>
+            <div class="my_order_div">
+              <span>黑名单</span>
+              <span class="my_order_icon">
+                <i class="iconfont icon-youjiantou"></i>
+              </span>
+            </div>
+          </a>
+        </section>
 
-      <!-- 退出登录 -->
-      <section class="profile_my_order border-1px">
-        <mt-button
-          type="danger"
-          style="width: 100%"
-          v-if="userInfo._id"
-          @click="logout"
-          >退出登录</mt-button
-        >
-      </section>
+        <!-- 退出登录 -->
+        <section class="profile_my_order border-1px">
+          <mt-button
+            type="danger"
+            style="width: 100%"
+            v-if="userInfo._id"
+            @click="logout"
+            >退出登录</mt-button
+          >
+        </section>
+      </div>
     </div>
   </div>
 </template>
@@ -154,9 +156,7 @@ export default {
     ...mapState(["userInfo"]),
   },
   components: {},
-  mounted() {
-    new BScroll(".mes_Other");
-  },
+
   methods: {
     logout() {
       MessageBox.confirm("确认退出吗？").then(
@@ -177,9 +177,7 @@ export default {
 
 <style scoped>
 .profile_my_order {
-  margin-top: 10px;
   background: #fff;
-
   position: relative;
 }
 

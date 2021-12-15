@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="datatop">
-      <i class="iconfont icon-zuojiantou-copy"></i>
+      <router-link class="iconfont icon-zuojiantou-copy" to="/profile">
+      </router-link>
       <span>个人资料</span>
       <i class="iconfont icon-zuojiantou-copy" style="color: white"></i>
     </div>

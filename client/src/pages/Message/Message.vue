@@ -33,12 +33,12 @@ export default {};
 <style scoped>
 .TOP {
   width: 100%;
-  height: 200px;
+  height: 80px;
   background-color: #a493ff;
 }
 .main {
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: white;
   border-radius: 30px 30px 0px 0px;
   position: absolute;
