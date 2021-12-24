@@ -38,7 +38,7 @@ export default {
 }
 
 .p-5 {
-  padding: 0.5rem;
+  padding: 1rem;
 }
 
 .p-02 {

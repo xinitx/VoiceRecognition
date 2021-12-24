@@ -66,19 +66,12 @@
             <div>小视频</div>
           </div>
         </div>
-        <div class="cls-con lll">
-          <div class="cls-center">
-            <van-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" /> Color
-          </div>
-          <div>2.9万浏览</div>
-        </div>
       </div>
 
       <!-- 列表 -->
-      <van-grid :column-num="2" :border="false">
+      <van-grid column-num="2" :border="false">
         <van-grid-item>
           <div class="item-con">
-            <!-- <img src="../assets/img/01.jpg" /> -->
             <van-image
               :src="img1"
               width="100%"
@@ -95,11 +88,7 @@
             </div>
           </div>
         </van-grid-item>
-        <van-grid-item>
-          <div class="item-con">
-            <van-image :src="adimg" width="45vw" height="12rem"></van-image>
-          </div>
-        </van-grid-item>
+
         <van-grid-item>
           <div class="item-con">
             <!-- <img src="../assets/img/01.jpg" /> -->
@@ -186,7 +175,6 @@ export default {
       catIdx: 0,
       search: "",
       img1: require("../../../static/discuss/01.jpg"),
-      adimg: require("../../../static/discuss/ad.png"),
     };
   },
   mounted: function () {
