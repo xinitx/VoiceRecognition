@@ -44,7 +44,7 @@
       </template>
     </van-swipe>
     <!-- 金刚导航 -->
-    <div class="cls-con p-5" @click="jump('/jxkc')">
+    <div class="cls-con p-5" @click="jump('/selectcourse')">
       <div>
         <span class="iconfont icon-xiangsidupipeimoban fs-icon"></span>
         <!-- <img src="../assets/img/a1.png" class="size-35" /> -->

@@ -1,5 +1,6 @@
 <template>
   <div class="con align-l">
+    <TopBar />
     <div class="cls-con title-con">
       <div class="title">我加入的课程</div>
       <div class="c-yellow">分类</div>
@@ -55,7 +56,11 @@
 </template>
 
 <script>
+import TopBar from "../../components/TopBar/TopBar";
 export default {
+  components: {
+    TopBar,
+  },
   data() {
     return {
       img1: require("../../../static/mycourse/02.jpg"),
@@ -80,6 +85,7 @@ export default {
 }
 
 .title-con {
+  margin-top: 44px;
   padding-bottom: 0.7rem;
   margin-bottom: 0.7rem;
   border-bottom: 1px solid #ededed;

@@ -35,7 +35,6 @@
 
 <script>
 import { mapState } from "vuex";
-import { Cell, CellGroup, Field, Popup, Button } from "vant";
 import { MessageBox, Toast } from "mint-ui";
 
 export default {
@@ -55,13 +54,7 @@ export default {
     //这里好像有点bug，因为cell标签不属于input类型，用不了v-model进行双向绑定
     // this.avatar = this.userInfo.avatar;
   },
-  components: {
-    [Cell.name]: Cell,
-    [CellGroup.name]: CellGroup,
-    [Field.name]: Field,
-    [Popup.name]: Popup,
-    [Button.name]: Button,
-  },
+
   methods: {
     comfirm() {
       MessageBox.confirm("确认修改吗？").then(

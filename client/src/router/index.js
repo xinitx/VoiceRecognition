@@ -15,6 +15,8 @@ import Profile from '../pages/Profile/Profile';
 import Detail from '../pages/Detail/Detail';
 import Data from '../pages/Data/Data';
 import MyCourse from '../pages/MyCourse/MyCourse';
+import SelectCourse from '../pages/SelectCourse/SelectCourse';
+import CourseDetail from '../pages/CourseDetail/CourseDetail';
 
 import Login from '../pages/Login/Login';
 import Friends from '../pages/Message/Friends/Friends';
@@ -103,6 +105,14 @@ export default new VueRouter({
     {//我的课程
       path: '/mycourse',
       component: MyCourse
+    },
+    {//精选课程
+      path: '/selectcourse',
+      component: SelectCourse
+    },
+    {//课程详情
+      path: '/coursedetail',
+      component: CourseDetail
     },
   ]
 })
