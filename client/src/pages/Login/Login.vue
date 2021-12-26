@@ -90,6 +90,29 @@ export default {
           }
         }, 1000);
 
+        // this.$axios({
+        //   data: this.phone,
+
+        //   method: "get",
+        //   url: "api/sendcode",
+        // })
+        //   .then((res) => {
+        //     //获取response，里面包含了表格数据
+        //     console.log(res);
+        //     if (res.code === 1) {
+        //       //失败
+        //       //显示提示
+        //       this.showAlert(res.msg);
+        //       //停止倒计时
+        //       if (this.computeTime) {
+        //         this.computeTime = 0;
+        //         clearInterval(this.intervalId);
+        //         this.intervalId = undefined;
+        //       }
+        //     }
+        //   })
+        //   .catch((err) => console.log(err));
+
         //发送ajax请求（向指定手机号发送验证码短信）
         const result = await reqSendCode(this.phone); //返回的是promise对象
         if (result.code === 1) {

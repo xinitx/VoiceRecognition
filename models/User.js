@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-
+const db = require('../db/db')
 //创建Schema
 const UserSchema = new Schema({
   //创建规则
@@ -22,12 +22,13 @@ const UserSchema = new Schema({
   },
   fans: {//粉丝
     type: Number,
-    default:0
+    default: 0
   },
-  follow:{//关注
-    type:Number,
-    default:0
+  follow: {//关注
+    type: Number,
+    default: 0
   }
 })
 
-module.exports = User = mongoose.model('users', UserSchema)
+//这里连接了数据库db，暴露出db的数据库模型User
+module.exports = db.model('User', UserSchema)

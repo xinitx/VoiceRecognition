@@ -5,8 +5,11 @@ import store from './store'
 // import 'swiper/dist/css/swiper.css'
 //引入路由器
 import router from './router'
+//引入axios
+import axios from 'axios'
+Vue.prototype.$axios = axios//存到vm的原型链中
 //引入组件库（在main.js里引入时为了做成全局标签）
-// import { Button, } from 'mint-ui'
+import { Button, } from 'mint-ui'
 import 'mint-ui/lib/style.min.css'
 
 
@@ -27,13 +30,13 @@ import {
   CellGroup,
   Field,
   Popup,
-  Button
+  Button as button
 } from "vant";
 Vue.use(CellGroup);
 Vue.use(Cell);
 Vue.use(Field);
 Vue.use(Popup);
-Vue.use(Button);
+Vue.use(button);
 
 Vue.use(Swipe);
 Vue.use(SwipeItem);

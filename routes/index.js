@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const md5 = require('blueimp-md5')
-const models = require('../db/models')
-const UserModel = models.getModel('user')
+const db = require('../models/User')
+const User = db.model('User')
 const _filter = { 'pwd': 0, '__v': 0 } // 查询时过滤掉
 const sms_util = require('../util/sms_util')
 const users = {}
@@ -47,14 +47,14 @@ router.post('/login_sms', function (req, res, next) {
   delete users[phone];
 
 
-  UserModel.findOne({ phone }, function (err, user) {
+  User.findOne({ phone }, function (err, user) {
     if (user) {
       req.session.userid = user._id
       res.send({ code: 0, data: user })
     } else {
       //存储数据
-      const userModel = new UserModel({ phone })
-      userModel.save(function (err, user) {
+      const user = new User({ phone })
+      user.save(function (err, user) {
         req.session.userid = user._id
         res.send({ code: 0, data: user })
       })
@@ -70,7 +70,7 @@ router.get('/userinfo', function (req, res) {
   // 取出userid
   const userid = req.session.userid
   // 查询
-  UserModel.findOne({ _id: userid }, _filter, function (err, user) {
+  User.findOne({ _id: userid }, _filter, function (err, user) {
     // 如果没有, 返回错误提示
     if (!user) {
       // 清除浏览器保存的userid的cookie
