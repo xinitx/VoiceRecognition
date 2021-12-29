@@ -9,25 +9,31 @@ const UserSchema = new Schema({
     // required: true
     default: '默认昵称'
   },
-  phone: {//邮箱
+  pwd: {//密码
+    type: String
+  },
+  sex: {//性别
+    type: String,
+    default: 'asexual'//默认值是中性
+  },
+  birthday: {//生日
+    type: Date
+  },
+  explain: {//介绍(签名)
+    type: String
+  },
+  email: {//邮箱
     type: String,
     required: true
   },
-  avatar: {//头像
-    type: String
+  imgurl: {//头像
+    type: String,
+    default: 'user.png'//给一张默认头像
   },
   date: {//日期
     type: Date,
     default: Date.now
   },
-  fans: {//粉丝
-    type: Number,
-    default: 0
-  },
-  follow: {//关注
-    type: Number,
-    default: 0
-  }
 })
 
 //这里连接了数据库db，暴露出db的数据库模型User

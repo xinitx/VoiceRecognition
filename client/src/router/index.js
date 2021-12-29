@@ -17,6 +17,7 @@ import Data from '../pages/Data/Data';
 import MyCourse from '../pages/MyCourse/MyCourse';
 import SelectCourse from '../pages/SelectCourse/SelectCourse';
 import CourseDetail from '../pages/CourseDetail/CourseDetail';
+import Register from '../pages/Register/Register';
 
 import Login from '../pages/Login/Login';
 import Friends from '../pages/Message/Friends/Friends';
@@ -97,6 +98,10 @@ export default new VueRouter({
     {//登录组件是一级路由
       path: '/login',
       component: Login
+    },
+    {//注册
+      path: '/register',
+      component: Register
     },
     {//基本资料
       path: '/data',
