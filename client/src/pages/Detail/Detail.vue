@@ -90,21 +90,63 @@
       <!-- 文字输入框 -->
       <div>
         <form action="">
-          <input type="text" id="shuru" placeholder="请输入文字......" />
+          <input
+            type="text"
+            v-model="cont"
+            id="shuru"
+            placeholder="请输入文字......"
+          />
         </form>
       </div>
       <div>
-        <span class="iconfont icon-tianjiajiahao"></span>
+        <img
+          @click="send"
+          class="send"
+          src="../../../static/detail/发送.png"
+          alt=""
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      cont: "",
+      arr: ["111", "222", "333"],
+    };
+  },
+  methods: {
+    send() {
+      if (this.cont.length > 0) {
+        this.arr.push(this.cont);
+        // console.log(this);
+        //发送
+        let aa = this.cont;
+        this.$socket.emit("message", aa);
+        console.log(this.arr);
+      }
+    },
+    //接收信息
+    getmsg() {
+      this.$socket.on("back", (data) => {
+        this.arr.push(data);
+        console.log(this.arr);
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>
+.send {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 30px;
+}
 .block1 {
   width: 100%;
   height: 50px;

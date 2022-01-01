@@ -68,8 +68,6 @@ export default {
       MessageBox.confirm("确认修改吗？").then(
         (action) => {
           console.log("点击了确定");
-          //请求退出
-          // this.$store.dispatch("logout");
           this.$router.push("/profile");
           Toast("修改成功");
         },

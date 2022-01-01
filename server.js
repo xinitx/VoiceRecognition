@@ -9,8 +9,14 @@ var session = require('express-session');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var files = require('./routes/files');
 
 var app = express();
+
+app.use('/', index);
+app.use('/users', users);
+app.use('/files', files);
+
 /*
 app.all("*", function(req, res, next) {
   if (!req.get("Origin")) return next();
@@ -44,8 +50,6 @@ app.use(session({
 }));
 
 
-app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -65,6 +69,21 @@ app.use(function (err, req, res, next) {
   res.render('error');
 
 });
+
+//websocket
+const server = app.listen(8082);//socket端口号
+const io = require('socket.io').listen(server);
+io.on('connect', (socket) => {
+  console.log('已连接websocket');
+
+  //接收信息
+  socket.on('message', data => {
+    console.log(data);
+
+    //广播消息
+    socket.broadcast.emit('back', data);//谁发的传给谁
+  })
+})
 
 const port = process.env.PORT || 5000;//指定端口号
 app.listen(port, () => {
