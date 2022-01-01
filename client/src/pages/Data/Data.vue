@@ -38,9 +38,17 @@ import { mapState } from "vuex";
 import { MessageBox, Toast } from "mint-ui";
 
 export default {
-  computed: {
-    ...mapState(["userInfo"]),
+  created() {
+    this.$store.commit("init_user");
   },
+
+  computed: {
+    ...mapState({
+      loginStatus: (state) => state.user.loginStatus,
+      userInfo: (state) => state.user.userInfo,
+    }),
+  },
+
   data() {
     return {
       name: 100,

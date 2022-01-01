@@ -6,7 +6,7 @@
         <span>我</span>
       </div>
 
-      <router-link :to="userInfo._id ? '/profile' : '/login'">
+      <router-link :to="userInfo.id ? '/profile' : '/login'">
         <div class="right">
           <div class="centerright">
             <img src="../../assets/头像.jpg" alt="" />
@@ -81,7 +81,7 @@
           <router-link
             href="javascript:"
             class="my_order"
-            :to="userInfo._id ? '/data' : '/login'"
+            :to="userInfo.id ? '/data' : '/login'"
           >
             <span>
               <i class="iconfont icon-ziliao"></i>
@@ -137,7 +137,7 @@
           <mt-button
             type="danger"
             style="width: 100%"
-            v-if="userInfo._id"
+            v-if="userInfo.id"
             @click="logout"
             >退出登录</mt-button
           >
@@ -149,20 +149,30 @@
 
 <script>
 import { mapState } from "vuex";
+import { mapMutations } from "vuex";
+
 import { MessageBox, Toast } from "mint-ui";
 export default {
-  computed: {
-    ...mapState(["userInfo"]),
+  created() {
+    this.$store.commit("init_user");
   },
-  components: {},
+
+  computed: {
+    ...mapState({
+      loginStatus: (state) => state.user.loginStatus,
+      userInfo: (state) => state.user.userInfo,
+    }),
+  },
 
   methods: {
+    ...mapMutations(["log_out"]),
     logout() {
       MessageBox.confirm("确认退出吗？").then(
         (action) => {
           console.log("点击了确定");
           //请求退出
-          this.$store.dispatch("logout");
+          // this.$store.dispatch("logout");
+          this.log_out();
           Toast("退出成功");
         },
         (action) => {
