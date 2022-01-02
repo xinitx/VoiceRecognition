@@ -18,6 +18,8 @@ import MyCourse from '../pages/MyCourse/MyCourse';
 import SelectCourse from '../pages/SelectCourse/SelectCourse';
 import CourseDetail from '../pages/CourseDetail/CourseDetail';
 import Register from '../pages/Register/Register';
+import Post from '../pages/Post/Post';
+import Page from '../pages/Page/Page';
 
 import Login from '../pages/Login/Login';
 import Friends from '../pages/Message/Friends/Friends';
@@ -118,6 +120,14 @@ export default new VueRouter({
     {//课程详情
       path: '/coursedetail',
       component: CourseDetail
+    },
+    {//发布帖子
+      path: '/post',
+      component: Post
+    },
+    {//帖子详情
+      path: '/page',
+      component: Page
     },
   ]
 })

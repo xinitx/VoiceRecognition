@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   data() {
     return {
@@ -37,7 +38,9 @@ export default {
       token: "",
     };
   },
+  computed: {},
   methods: {
+    ...mapMutations(["user_login"]),
     //跳转到注册页面
     toRegister() {
       this.$router.push("/register");
@@ -69,7 +72,12 @@ export default {
             console.log(res);
             this.token = res.data.back.token;
             console.log(this.token);
-            //设置分页数据
+
+            //将data用户信息对象存到vuex
+            // this.$store.dispatch("login", res.data.back);
+            this.user_login(res.data.back);
+            //页面跳转
+            this.$router.push("/profile");
           })
           .catch((err) => console.log(err));
       }

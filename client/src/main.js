@@ -12,6 +12,19 @@ Vue.prototype.$axios = axios//存到vm的原型链中
 import { Button, } from 'mint-ui'
 import 'mint-ui/lib/style.min.css'
 
+//websocket
+// import io from 'vue-socket.io'
+// Vue.prototype.socket = io('http://localhost:8082')
+import SocketIO from "socket.io-client"
+import VueSocketIO from 'vue-socket.io'
+
+Vue.use(new VueSocketIO({
+  debug: true,
+  connection: SocketIO.connect('http://localhost:8082'),
+  transports: ['websocket']
+}))
+
+
 
 import {
   Swipe,
@@ -30,6 +43,7 @@ import {
   CellGroup,
   Field,
   Popup,
+  Uploader,
   Button as button
 } from "vant";
 Vue.use(CellGroup);
@@ -37,7 +51,7 @@ Vue.use(Cell);
 Vue.use(Field);
 Vue.use(Popup);
 Vue.use(button);
-
+Vue.use(Uploader);
 Vue.use(Swipe);
 Vue.use(SwipeItem);
 Vue.use(Icon);

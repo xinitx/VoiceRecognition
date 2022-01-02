@@ -7,9 +7,6 @@ const ArticleSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  topic: {//标题
-    type: String,
-  },
   content: {
     type: String,
   },

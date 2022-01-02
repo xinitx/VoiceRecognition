@@ -46,23 +46,20 @@
         </div>
       </div>
       <!-- 发图文等按钮 -->
-      <div class="cls-con">
+      <div class="cls-con" @click="gopost">
         <div class="cls-center btn-con">
           <div>
             <span class="iconfont icon-icon-fensi"></span>
-            <!-- <img src="../assets/pic.png" class="size-20" /> -->
             <div>发图文</div>
           </div>
           <div class="line-gap"></div>
           <div>
             <span class="iconfont icon-icon-fensi"></span>
-            <!-- <img src="../assets/tie.png" class="size-20" /> -->
             <div>发帖子</div>
           </div>
           <div class="line-gap"></div>
           <div>
             <span class="iconfont icon-icon-fensi"></span>
-            <!-- <img src="../assets/video.png" class="size-20" /> -->
             <div>小视频</div>
           </div>
         </div>
@@ -179,6 +176,11 @@ export default {
   },
   mounted: function () {
     document.body.style.backgroundColor = "#F3F6FA";
+  },
+  methods: {
+    gopost() {
+      this.$router.push("/post");
+    },
   },
 };
 </script>

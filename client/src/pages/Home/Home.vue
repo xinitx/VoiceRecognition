@@ -44,8 +44,15 @@
 import { mapState } from "vuex";
 
 export default {
+  created() {
+    this.$store.commit("init_user");
+  },
+
   computed: {
-    ...mapState(["userInfo"]),
+    ...mapState({
+      loginStatus: (state) => state.user.loginStatus,
+      userInfo: (state) => state.user.userInfo,
+    }),
   },
   data() {
     return {
