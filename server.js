@@ -1,5 +1,6 @@
 
 var express = require('express');
+var app = express();
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -7,15 +8,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var files = require('./routes/files');
-
-var app = express();
-
-app.use('/', index);
-app.use('/users', users);
-app.use('/files', files);
 
 /*
 app.all("*", function(req, res, next) {
@@ -50,6 +42,14 @@ app.use(session({
 }));
 
 
+var index = require('./routes/index');
+var users = require('./routes/users');
+var files = require('./routes/files');
+
+
+app.use('/', index);
+app.use('/users', users);
+app.use('/files', files);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

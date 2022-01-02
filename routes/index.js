@@ -10,6 +10,8 @@ router.post('/register', (req, res) => {
 })
 //登录
 router.post('/login', (req, res) => {
+  console.log(req.body)
+
   login.logIn(req, res);
 })
 //返回token
